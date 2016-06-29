@@ -12,10 +12,10 @@ Spring MVC Fundamentals
 
 <b>Handler Mapping Implementations:</b><br>
 <ul>
-	<li>BeanNameUrlHandlerMapping</li>
+	<li>BeanNameUrlHandlerMapping (Default)</li>
 	<li>ControllerBeanNameHandlerMapping</li>
 	<li>ControllerClassNameHandlerMapping</li>
-	<li>DefaultAnnotationHandlerMapping</li>
+	<li>DefaultAnnotationHandlerMapping (Default)</li>
 	<li>SimpleUrlHandlerMapping</li>
 </ul>
 
