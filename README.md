@@ -8,7 +8,7 @@ Spring MVC Fundamentals
 
 <b>Configuration of Dispatcher Servlet:</b><br>
 
-![alt tag](https://github.com/sendkumaranil/DesignPatternsExample/blob/master/Chrome_Advance_RestClient.PNG)
+![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/web.png)
 
 <b>Handler Mapping Implementations:</b><br>
 <ul>
