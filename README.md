@@ -4,7 +4,7 @@ Spring MVC Fundamentals
 ------------------------
 <p> A request through Spring MVC: </p>
 
-![alt tag](https://github.com/sendkumaranil/DesignPatternsExample/blob/master/Chrome_Advance_RestClient.PNG)
+![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/mvc_control_flow.png)
 
 <b>Configuration of Dispatcher Servlet:</b><br>
 
