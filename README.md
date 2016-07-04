@@ -84,4 +84,4 @@ Spring MVC Fundamentals
 
 <b>Project Tree Structure:</b><br>
 
-![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/web.png)
+![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/ProjectExplorer.PNG)
