@@ -82,3 +82,6 @@ Spring MVC Fundamentals
 	<li>Programmatic : Validator, ValidatorUtil and Error Interface</li>
 </ul>
 
+<b>Project Tree Structure:</b><br>
+
+![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/web.png)
