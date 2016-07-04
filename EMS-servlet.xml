@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<!-- Other bean definitions -->
+
+	<context:component-scan base-package="com.springmvcexample.controller"/>
+
+	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/WEB-INF/pages/" />  
+        <property name="suffix" value=".jsp" />  
+    </bean>  	
+
+	<!-- Spring Database access using JdbcDaoSupport -->
+	<bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="myDataSource"></property>
+	</bean>
+	
+	<bean id="employeeDao" class="com.springmvcexample.daoImpl.EmployeeDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/> 
+	</bean>
+	
+	<bean id="empService" class="com.springmvcexample.service.EmployeeService">
+		<property name="employeeDao" ref="employeeDao"/> 
+	</bean>
+	
+	<bean id="employeeValidator" class="com.springmvcexample.util.EmployeeValidator"/>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:message" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	   <property name="exceptionMappings">
+	      <props>
+	         <prop key="com.springmvcexample.util.EmployeeException">
+	            exceptionPage
+	         </prop>
+	      </props>
+	   </property>
+   		<property name="defaultErrorView" value="error"/>
+	</bean>
+	
+</beans>
