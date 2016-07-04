@@ -1,4 +1,4 @@
-# SpringMVCFramework (under progress..)
+# SpringMVCFramework
 
 Spring MVC Fundamentals
 ------------------------
