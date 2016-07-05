@@ -55,7 +55,7 @@
             <input type="submit" value="Submit"/>
         </td>
         <td>
-        	<a href="/SpringMVCExample/">Cancel</a>
+        	<a href="/SpringMVCExample/welcome">Cancel</a>
         </td>
     </tr>
 </table>  
