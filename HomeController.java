@@ -3,6 +3,8 @@ package com.springmvcexample.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -39,12 +41,32 @@ public class HomeController {
 		binder.setValidator(validator);
 	}
 	
-	@RequestMapping({"/","/home"})
-	public String showHomePage(Map<String,Object> employeeMap){
+	@RequestMapping("/welcome")
+	public String showWelcomePage(Map<String,Object> employeeMap){
 		
 		List<Employee> empList=empService.getEmployee();
 		employeeMap.put("employeelist", empList);
+		return "welcome";
+	}
+	
+	@RequestMapping({"/","/home"})
+	public String showHomePage(){
 		return "home";
+	}
+	
+	@RequestMapping(value="/login")
+    public String login(HttpServletRequest request, Model model){
+        return "login";
+    }
+	
+	@RequestMapping(value="/logout")
+    public String logut(HttpServletRequest request, Model model){
+        return "home";
+    }
+	
+	@RequestMapping(value="/accessDenied")
+	public String accessDenied(){
+		return "denied";
 	}
 	
 	@RequestMapping(value="/profile/{employeeId}")
