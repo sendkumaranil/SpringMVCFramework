@@ -183,4 +183,6 @@ Spring MVC Fundamentals
 			<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 		</listener>
 
+<b>Updated Project tree structure for Spring Security:<b><br>
 
+![alt tag](https://github.com/sendkumaranil/SpringMVCFramework/blob/master/Spring_Security_tree_structure.PNG)
