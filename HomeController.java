@@ -55,14 +55,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/login")
-    public String login(HttpServletRequest request, Model model){
-        return "login";
-    }
+    	public String login(HttpServletRequest request, Model model){
+        	return "login";
+    	}
 	
 	@RequestMapping(value="/logout")
-    public String logut(HttpServletRequest request, Model model){
-        return "home";
-    }
+    	public String logut(HttpServletRequest request, Model model){
+        	return "home";
+    	}
 	
 	@RequestMapping(value="/accessDenied")
 	public String accessDenied(){
@@ -83,8 +83,8 @@ public class HomeController {
 			return new ModelAndView("addEmp");
 		}
 		empService.addEmployee(employee);
-      return new ModelAndView("redirect:/");
-   }
+      	return new ModelAndView("redirect:/");
+   	}
 
 	@RequestMapping(value="/createEmpPage")
 	public String showAddEmpPage(Model model){
@@ -119,5 +119,4 @@ public class HomeController {
 		 empService.editEmployee(employee);
 		 return new ModelAndView("redirect:/");
 	}
-	
 }
