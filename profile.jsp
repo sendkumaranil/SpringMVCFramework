@@ -49,7 +49,7 @@
 </span>
 </div>
 <br><br>
-<a href="/SpringMVCExample/">Back To Home</a>
+<a href="/SpringMVCExample/welcome">Back</a>
 </body>
 <script type="text/javascript">
 
