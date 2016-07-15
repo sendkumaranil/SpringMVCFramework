@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Add New Employee</title>
 <style>
 .error {
@@ -17,7 +18,7 @@
 <body>
 <h4>Add Employee Information</h4>
 <hr>
-<form:form method="POST" action="/SpringMVCExample/addEmployee" modelAttribute="employee">
+<form:form method="POST" action="/SpringMVCExample/manageEmp/addEmployee" modelAttribute="employee">
    <table>
     <tr>
         <td><form:label path="empname">Name:</form:label></td>
@@ -55,11 +56,21 @@
         <td><form:errors path="idno" cssClass="error" /></td>
     </tr>
     <tr>
+    	<td>Select Department:</td>
+    	<td>
+    		<form:select path="deptid">
+ 				<form:option value="-1" label="-----Select Department-----"></form:option>
+ 				<form:options items="${deptList}" itemValue="deptid" itemLabel="deptname"/>
+ 			</form:select>
+    	</td>
+    	<td><form:errors path="deptid" cssClass="error" /></td>
+    </tr>
+    <tr>
         <td>
             <input type="submit" value="Submit"/>
         </td>
         <td>
-        	<a href="/SpringMVCExample/">Cancel</a>
+        	<a href="/SpringMVCExample/welcome">Cancel</a>
         </td>
     </tr>
 </table>  
