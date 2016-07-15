@@ -10,6 +10,8 @@ public class Employee {
 	private String doj;
 	private String idtype;
 	private String idno;
+	private int deptid;
+	private String deptname;
 	
 	
 	public String getEmpname() {
@@ -59,6 +61,18 @@ public class Employee {
 	}
 	public void setIdno(String idno) {
 		this.idno = idno;
+	}
+	public int getDeptid() {
+		return deptid;
+	}
+	public void setDeptid(int deptid) {
+		this.deptid = deptid;
+	}
+	public String getDeptname() {
+		return deptname;
+	}
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
 	}
 	
 }
