@@ -3,7 +3,10 @@ package com.springmvcexample.service;
 import java.util.List;
 
 import com.springmvcexample.dao.EmployeeDao;
+import com.springmvcexample.model.Department;
 import com.springmvcexample.model.Employee;
+import com.springmvcexample.model.Role;
+import com.springmvcexample.model.User;
 
 public class EmployeeService {
 
@@ -32,4 +35,10 @@ public class EmployeeService {
 	public void editEmployee(Employee employee){
 		employeeDao.editEmployee(employee);
 	}
+
+	public List<Department> getDepartments() {
+		
+		return employeeDao.getDepartments();
+	}
+	
 }
