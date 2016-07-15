@@ -9,7 +9,9 @@
 <title>Employee Profile</title>
 </head>
 <body>
-<table border="1" width="50%">
+<h4>Employee Details:</h4>
+<hr>
+<table border="1" width="50%" cellspacing="0" cellpadding="0">
 	<tr align="left">
 		<th nowrap="nowrap" align="left">Employee Id</th>
 		<th nowrap="nowrap" align="left">Employee Name</th>
@@ -19,6 +21,7 @@
 		<th nowrap="nowrap" align="left">Mobile No</th>
 		<th nowrap="nowrap" align="left">ID type</th>
 		<th nowrap="nowrap" align="left">ID No</th>
+		<th nowrap="nowrap" align="left">Department</th>
 	</tr>
 	<tr align="left">
 		<td nowrap="nowrap" align="left">${emp_profile.empid}</td>
@@ -29,18 +32,19 @@
 		<td nowrap="nowrap" align="left">${emp_profile.mobileno}</td>
 		<td nowrap="nowrap" align="left">${emp_profile.idtype}</td>
 		<td nowrap="nowrap" align="left">${emp_profile.idno}</td>
+		<td nowrap="nowrap" align="left">${emp_profile.deptname}</td>
 	</tr>
 </table>
 
 <div  align="left">
 <span>
-	<spring:url value="/profile/edit/{employeeId}" var="employee_url">
+	<spring:url value="/manageEmp/profile/edit/{employeeId}" var="employee_url">
 		<spring:param name="employeeId" value="${emp_profile.empid}"></spring:param>
 	</spring:url>
 	<a href="${employee_url}">
 		<c:out value="Edit"></c:out>
 	</a>|
-	<spring:url value="/profile/delete/{employeeId}" var="employee_delete_url">
+	<spring:url value="/manageEmp/profile/delete/{employeeId}" var="employee_delete_url">
 		<spring:param name="employeeId" value="${emp_profile.empid}"></spring:param>
 	</spring:url>
 	<a href="${employee_delete_url}">
@@ -48,6 +52,7 @@
 	</a>
 </span>
 </div>
+<hr>
 <br><br>
 <a href="/SpringMVCExample/welcome">Back</a>
 </body>
