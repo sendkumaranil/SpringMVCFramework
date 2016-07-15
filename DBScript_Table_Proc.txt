@@ -1,0 +1,29 @@
+CREATE TABLE `myemployee` (
+  `empid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `empname` varchar(100) DEFAULT NULL,
+  `birthdate` varchar(50) DEFAULT NULL,
+  `joindate` varchar(50) DEFAULT NULL,
+  `idtype` varchar(25) DEFAULT NULL,
+  `idno` varchar(25) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `mobileno` varchar(20) DEFAULT NULL,
+  `deptid` bigint(10) DEFAULT NULL,
+  PRIMARY KEY (`empid`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `department` (
+  `department_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `dept_name` varchar(50) NOT NULL DEFAULT '-NA-',
+  PRIMARY KEY (`department_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=latin1;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `assignRoleToUser`(IN user_id bigint,IN role_id bigint)
+begin
+			declare is_available integer;
+			select count(*) into is_available from user_role where userid=user_id and roleid=role_id;
+            if is_available = 0 then
+				insert into user_role(roleid,userid)values(role_id,user_id);
+            end if;
+		end$$
+DELIMITER //
