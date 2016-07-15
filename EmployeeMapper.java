@@ -20,6 +20,7 @@ public class EmployeeMapper implements RowMapper<Employee> {
 		employee.setDoj(rs.getString("joindate"));
 		employee.setIdtype(rs.getString("idtype"));
 		employee.setIdno(rs.getString("idno"));
+		employee.setDeptname(rs.getString("dept_name"));
 		return employee;
 	}
 }
