@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>Exception</title>
 <style>
 .error {
@@ -18,8 +20,12 @@
 <h4>Employee Management Exception Handling</h4>
 <hr>
 <h3><span class="error">${exception.exceptionMsg}</span></h3>
-
+<div>
+	<img src="http://www.allsmileys.com/files/smiley-central-communicate/5268.gif" style="border:0px;vertical-align:middle">
+</div>
 <br><br>
-<a href="/SpringMVCExample/">Back To Home</a>
+<a href="/SpringMVCExample/" class="btn btn-success btn-lg">
+      <span class="glyphicon glyphicon-home"></span>
+</a>
 </body>
 </html>
