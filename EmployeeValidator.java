@@ -32,5 +32,8 @@ public class EmployeeValidator implements Validator {
 		if(!Utility.validatePhoneNumber(employee.getMobileno())){
 			errors.rejectValue("mobileno","invalidmobileno",new Object[]{"mobileno"},"Invalid mobile No [only 10 digits allowed and no space and others characters allowed]");
 		}
+		if(employee.getDeptid()==-1){
+			errors.rejectValue("deptid","emptydepartment",new Object[]{"deptid"},"Please select department");
+		}
 	}
 }
