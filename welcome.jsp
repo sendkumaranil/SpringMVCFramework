@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Home</title>
 </head>
 <body>
 <h4>Employee Management System</h4>
 <div align="right">
-<a href="/SpringMVCExample/logout">Logout</a>
+<a href="/SpringMVCExample/logout">Logout</a>|
+<a href="/SpringMVCExample/changePassword">Change Password</a>
 </div>
 <hr>
 <c:forEach var="employee" items="${employeelist}">
@@ -24,6 +26,11 @@
 	</a>
 </c:forEach>
 <br><br>
-<a href="/SpringMVCExample/createEmpPage">Add New Employee</a>
+<hr>
+<i class="material-icons">person_add</i>
+<a href="/SpringMVCExample/manageEmp/createEmpPage">Add New Employee</a>|
+<a href="/SpringMVCExample/usermanage/register">Manage Users and Roles</a>|
+<a href="/SpringMVCExample/viewUsersAndRoles">View Users and Roles</a>
+<hr>
 </body>
 </html>
