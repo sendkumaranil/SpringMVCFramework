@@ -6,12 +6,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home</title>
+<title>Employee Management System</title>
 </head>
 <body>
-<h4>Employee Management System</h4>
+<div>
+<h3>Employee Management System</h3>
+</div>
 <hr>
+<div>
 <a href="/SpringMVCExample/login">Login</a>|
-<a href="#">Register New User</a>
+<a href="/SpringMVCExample/contact">Contact Us</a>|
+<a href="/SpringMVCExample/aboutus">About Us</a>
+</div>
+<hr>
+<div align="center">
+<img src="http://www.allsmileys.com/files/sweetim-nature/6848.gif" style="border:0px;vertical-align:middle;position:absolute; TOP:10px; LEFT:1850px; WIDTH:50px; HEIGHT:50px">
+</div>
 </body>
 </html>
