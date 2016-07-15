@@ -17,12 +17,13 @@
 <body>
 <h4>Edit Employee</h4>
 <hr>
-<form:form method="POST" action="/SpringMVCExample/editEmployee" modelAttribute="employee">
+<form:form method="POST" action="/SpringMVCExample/manageEmp/editEmployee" modelAttribute="employee">
    <table>
     <tr>
         <td><form:label path="dob">Date Of Birth:</form:label></td>
         <td><form:input path="dob" /></td>
         <td><form:hidden path="empid"/></td>
+        <td><form:hidden path="empname"/></td>
         <td><form:errors path="dob" cssClass="error" /></td>
     </tr>
     <tr>
@@ -51,14 +52,24 @@
         <td><form:errors path="idno" cssClass="error" /></td>
     </tr>
     <tr>
+    	<td>Select Department:</td>
+    	<td>
+    		<form:select path="deptid">
+ 				<form:option value="-1" label="-----Select Department-----"></form:option>
+ 				<form:options items="${deptList}" itemValue="deptid" itemLabel="deptname"/>
+ 			</form:select>
+    	</td>
+    	<td><form:input path="deptname" disabled="true" /></td>
+    	<td><form:errors path="deptid" cssClass="error" /></td>
+    </tr>
+    <tr>
         <td>
             <input type="submit" value="Submit"/>
-        </td>
-        <td>
-        	<a href="/SpringMVCExample/welcome">Cancel</a>
+            <a href="/SpringMVCExample/welcome">Cancel</a>
         </td>
     </tr>
 </table>  
 </form:form>
+<hr>
 </body>
 </html>
