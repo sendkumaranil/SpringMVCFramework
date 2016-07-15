@@ -9,9 +9,11 @@
  
  
  	<http auto-config="true">
- 		<intercept-url pattern="/welcome" access="ROLE_USER,ROLE_ADMIN"/>
- 		<intercept-url pattern="/createEmpPage" access="ROLE_ADMIN"/>
- 		<form-login login-page="/login" authentication-failure-url="/login" 
+ 		<intercept-url pattern="/welcome" access="ROLE_USER,ROLE_HRADMIN,ROLE_SYSADMIN"/>
+ 		<intercept-url pattern="/manageEmp/**" access="ROLE_HRADMIN"/>
+ 		<intercept-url pattern="/usermanage/**" access="ROLE_SYSADMIN"/>
+ 		
+ 		<form-login login-page="/login" authentication-failure-url="/login?error" 
  		always-use-default-target="true" default-target-url="/welcome"/>
  		<logout logout-url="/logout"/>
  		<access-denied-handler error-page="/accessDenied"/>
