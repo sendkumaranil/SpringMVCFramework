@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvcexample.model.Department;
 import com.springmvcexample.model.Employee;
+import com.springmvcexample.model.User;
 import com.springmvcexample.service.EmployeeService;
 import com.springmvcexample.util.EmployeeException;
 import com.springmvcexample.util.Utility;
@@ -55,18 +58,26 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/login")
-    	public String login(HttpServletRequest request, Model model){
-        	return "login";
-    	}
+    public String login(HttpServletRequest request, @RequestParam(value = "error", required = false) String error,Model model){
+		if (error != null) {
+			model.addAttribute("error", "Invalid username and password!");
+		}
+        return "login";
+    }
 	
 	@RequestMapping(value="/logout")
-    	public String logut(HttpServletRequest request, Model model){
-        	return "home";
-    	}
+    public String logut(HttpServletRequest request, Model model){
+        return "home";
+    }
 	
 	@RequestMapping(value="/accessDenied")
 	public String accessDenied(){
 		return "denied";
+	}
+	
+	@RequestMapping(value="/contact")
+	public String contactUs(){
+		return "contact";
 	}
 	
 	@RequestMapping(value="/profile/{employeeId}")
@@ -76,38 +87,50 @@ public class HomeController {
 		return "profile";
 	}
 	
-	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+	@RequestMapping(value = "/manageEmp/addEmployee", method = RequestMethod.POST)
 	public ModelAndView addEmployee(@ModelAttribute @Validated Employee employee,BindingResult result) {
 		
 		if(result.hasErrors()){
 			return new ModelAndView("addEmp");
 		}
 		empService.addEmployee(employee);
-      	return new ModelAndView("redirect:/");
-   	}
+      return new ModelAndView("redirect:/");
+   }
 
-	@RequestMapping(value="/createEmpPage")
-	public String showAddEmpPage(Model model){
+	@RequestMapping(value="/manageEmp/createEmpPage")
+	public String showAddEmpPage(Map<String,Object> empMap,Model model){
+		List<Department> deptList=empService.getDepartments();
+		empMap.put("deptList",deptList );
 		model.addAttribute("employee",new Employee());
 		return "addEmp";
 	}
 	
-	@RequestMapping(value="/profile/delete/{employeeId}",method=RequestMethod.GET)
+	@RequestMapping(value="/manageEmp/profile/delete/{employeeId}",method=RequestMethod.GET)
 	public ModelAndView deleteEmpAction(@PathVariable int employeeId){
 		 empService.deleteEmployee(employeeId);
-		 return new ModelAndView("redirect:/");
+		 return new ModelAndView("redirect:/welcome");
 	}
 	
-	@RequestMapping(value="/profile/edit/{employeeId}",method=RequestMethod.GET)
+	@RequestMapping(value="/manageEmp/profile/edit/{employeeId}",method=RequestMethod.GET)
 	public String showEditEmpPage(@PathVariable int employeeId,Model model){
 		Employee employee=empService.getEmployeeProfile(employeeId);
+		List<Department> deptList=empService.getDepartments();
+		model.addAttribute("deptList", deptList);
 		model.addAttribute("employee",employee);
 		return "editEmp";
 	}
 	
-	@RequestMapping(value="/editEmployee",method=RequestMethod.POST)
+	@RequestMapping(value="/manageEmp/editEmployee",method=RequestMethod.POST)
 	@ExceptionHandler(EmployeeException.class)
 	public ModelAndView editEmployee(@ModelAttribute @Validated Employee employee,BindingResult result){
+		ModelAndView mv=new ModelAndView();
+		
+		if(result.hasErrors()){
+			List<Department> deptList=empService.getDepartments();
+			mv.addObject("deptList", deptList);
+			mv.setViewName("editEmp");
+			return mv;
+		}
 		
 		if(!Utility.isValidEmail(employee.getEmailid())){
 			throw new EmployeeException("Invalid Email id!!!");
@@ -116,7 +139,15 @@ public class HomeController {
 		if(!Utility.validatePhoneNumber(employee.getMobileno())){
 			throw new EmployeeException("Invalid Mobile No[Only 10 digits allowed and no space and any chracters allowed!!]");
 		}
+		
 		 empService.editEmployee(employee);
-		 return new ModelAndView("redirect:/");
+		 mv.setViewName("redirect:/welcome");
+		 return mv;
+	}
+	
+	@RequestMapping("/aboutus")
+	public String showAboutUs(){
+		
+		return "aboutus";
 	}
 }
