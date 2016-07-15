@@ -28,5 +28,6 @@
     </tr>
 </table>  
 </form:form>
+<hr>
 </body>
 </html>
