@@ -6,10 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SignIn</title>
+<style>
+.error {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+</style>
 </head>
 <body>
-<h3>Login with Username and Password</h3>
+<h4>SignIn</h4>
+<hr>
+<div>
     <c:url var="loginUrl" value="/j_spring_security_check"></c:url>
+    	<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
     <form action="${loginUrl}" method="POST">
         <table>
             <tr>
@@ -26,8 +42,10 @@
             </tr>
         </table>
     </form>
+    <p><a href="/SpringMVCExample/forgetPassword">Forget password</a>|
+    <a href="/SpringMVCExample/">Home</a></p>
+    
+</div>
     <hr>
-    <br><br>
-	<a href="/SpringMVCExample/">Back To Home</a>
 </body>
 </html>
